@@ -6,6 +6,9 @@
 function isNightWork(startDate, endDate) {
 	startDate = new Date(startDate);
 	endDate = new Date(endDate);
+	if ( !(startDate instanceof Date && !isNaN(startDate.valueOf()))
+	      || !(endDate instanceof Date && !isNaN(endDate.valueOf())) )
+	       throw new Error('invalid arguments');
 	if (startDate >= endDate) throw new Error('startDate must be less than endDate');
 
 	// если начали в одном дне, а закончили уже на следующий, то точно работали ночью - разница в днях больше нуля
